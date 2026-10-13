@@ -1,0 +1,15 @@
+# Lumière Lifestyle Journal
+
+> A sample editorial blog about wellness, slow travel and personal growth, with nine bundled stories and a demo newsletter form.
+
+This is a public sample website created with XavaInf. Content, products, business details and identities are illustrative.
+
+## Pages
+
+- [A Life Well Lived](https://vibed-blog.xavainf.com/): Explore the Lumière sample lifestyle journal, featuring wellness rituals, slow travel and personal growth. Newsletter signup is a demo.
+- [All Stories](https://vibed-blog.xavainf.com/posts): Browse all nine sample Lumière stories across wellness, travel and personal growth.
+- [Sitemap](https://vibed-blog.xavainf.com/sitemap.xml): Complete public page list.
+
+## Demo boundaries
+
+No production purchases, appointments, email delivery or authentication are provided. No ratings or real business performance are claimed.

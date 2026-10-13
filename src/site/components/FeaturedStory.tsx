@@ -21,11 +21,6 @@ export function FeaturedStory() {
 				backgroundColor: 'var(--color-card)',
 				paddingTop: 'var(--section-gap)',
 				paddingBottom: 'var(--section-gap)',
-				/*
-				 * position:relative here so the quote — which lives OUTSIDE
-				 * the inner grid — can be absolutely placed relative to the
-				 * full section width, not just the grid container.
-				 */
 				position: 'relative',
 				overflow: 'visible',
 			}}
@@ -44,19 +39,13 @@ export function FeaturedStory() {
 					<span style={{ color: 'var(--color-rose-deep)', fontSize: '0.55rem' }}>✦</span>
 				</div>
 
-				{/*
-				 * ── LAYOUT WRAPPER ──────────────────────────────────────────────
-				 * position:relative so percentage-based left/top on the quote
-				 * are relative to this container (not the viewport).
-				 * overflow:visible lets the quote bleed outside its bounds.
-				 */}
 				<div className="relative" style={{ overflow: 'visible' }}>
 
 					{/* ── GRID: text LEFT · image RIGHT ─────────────────────── */}
 					<div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
 
 						{/* LEFT: editorial text block — cols 1–5 */}
-						<div className="fade-up lg:col-span-5 flex flex-col justify-center" style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
+						<div className="fade-up min-w-0 lg:col-span-5 flex flex-col justify-center" style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
 
 							{/* Date */}
 							<p
@@ -68,7 +57,7 @@ export function FeaturedStory() {
 
 							{/* Title */}
 							<h2
-								className="font-serif mb-6"
+								data-featured-title className="font-serif mb-6"
 								style={{
 									fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)',
 									lineHeight: 1.15,
@@ -79,12 +68,13 @@ export function FeaturedStory() {
 								{post.title}
 							</h2>
 
-							{/* Spacer — breathing room so the quote doesn't collide with excerpt on mid viewports */}
-							<div className="hidden lg:block" style={{ height: 'clamp(4rem, 8vw, 7rem)' }} />
+							<blockquote data-featured-quote className="font-serif italic mb-8" style={{ marginInline: 0, fontSize: 'clamp(1.5rem, 2.5vw, 2.25rem)', lineHeight: 1.3, color: 'var(--color-foreground)', maxWidth: '22ch' }}>
+                                for the adventurous,<br />the heartfelt<br />and sun kissed
+                            </blockquote>
 
 							{/* Excerpt */}
 							<p
-								className="font-sans mb-8"
+								data-featured-excerpt className="font-sans mb-8"
 								style={{
 									fontSize: '0.95rem',
 									lineHeight: 1.8,
@@ -114,7 +104,7 @@ export function FeaturedStory() {
 
 						{/* RIGHT: image stack — cols 7–12 */}
 						<div
-							className="fade-up lg:col-span-6 lg:col-start-7 relative"
+							className="fade-up min-w-0 lg:col-span-6 lg:col-start-7 relative"
 							style={{ zIndex: 1, paddingBottom: '2rem' }}
 						>
 							{/* Offset decorative border behind image */}
@@ -171,73 +161,6 @@ export function FeaturedStory() {
 						</div>
 					</div>
 
-					{/*
-					 * ── EDITORIAL QUOTE — INDEPENDENT LAYER ────────────────────
-					 *
-					 * This is NOT a grid child. It sits as a sibling to the grid,
-					 * absolutely positioned relative to the .relative wrapper above.
-					 *
-					 * Placement:
-					 *   left: 28%  → starts inside the text column
-					 *   top: 50% + translateY(-50%) → vertically centred on the composition
-					 *   max-width: 420px → bleeds naturally into the image
-					 *   z-index: 3 → above image (z:1) and decorative border (z:0)
-					 *
-					 * Typography:
-					 *   Playfair Display italic · 42–64px · #1A1A1A · weight 400
-					 *   Lines broken manually for editorial rhythm
-					 */}
-					<blockquote
-						className="hidden lg:block absolute pointer-events-none"
-						style={{
-							left: '28%',
-							top: '50%',
-							transform: 'translateY(-50%)',
-							maxWidth: '420px',
-							zIndex: 3,
-						}}
-					>
-						<p
-							style={{
-								fontFamily: "'Playfair Display', Georgia, serif",
-								fontStyle: 'italic',
-								fontWeight: 400,
-								fontSize: 'clamp(2.625rem, 4.5vw, 4rem)',
-								lineHeight: 1.2,
-								color: '#1A1A1A',
-								letterSpacing: '-0.02em',
-								textAlign: 'left',
-							}}
-						>
-							for the adventurous,<br />
-							the heartfelt<br />
-							and sun kissed
-						</p>
-					</blockquote>
-
-					{/* Mobile fallback — inline, between title and excerpt */}
-					<blockquote
-						className="lg:hidden mt-2 mb-8"
-						style={{
-							paddingLeft: '1rem',
-							borderLeft: '2px solid var(--color-rose)',
-						}}
-					>
-						<p
-							style={{
-								fontFamily: "'Playfair Display', Georgia, serif",
-								fontStyle: 'italic',
-								fontWeight: 400,
-								fontSize: 'clamp(1.5rem, 6vw, 2rem)',
-								lineHeight: 1.25,
-								color: '#1A1A1A',
-							}}
-						>
-							for the adventurous,<br />
-							the heartfelt<br />
-							and sun kissed
-						</p>
-					</blockquote>
 
 				</div>
 			</div>
