@@ -1,0 +1,94 @@
+/* Tailwind v4 — config lives here only. There is no tailwind.config.js; do not add one. */
+@import "tailwindcss";
+
+/* From the Vite template's index.html <style>. */
+/* Minimal critical CSS - keep default tokens in sync with globals.css */
+:root {
+	color-scheme: dark;
+	--background: 240 10% 4%;
+	--foreground: 200 10% 95%;
+}
+body {
+	background-color: hsl(var(--background));
+	color: hsl(var(--foreground));
+	min-height: 100vh;
+}
+
+
+/*
+ * Design system: CSS variables + Tailwind theme only. No inline styles.
+ *
+ * - All colors and tokens are defined in :root and exposed via the @theme block.
+ * - Components must use only Tailwind utilities that reference these tokens
+ *   (e.g. bg-background, text-foreground, text-destructive, border-border,
+ *   placeholder:text-muted-foreground). Do not use inline style={{}} or
+ *   ad-hoc color classes (e.g. text-red-600, text-gray-900).
+ * - To add a new color or semantic: add the var to :root, add the mapping in
+ *   @theme, then use the new utility in components.
+ */
+:root {
+	color-scheme: dark;
+
+	/* Theme colors — customize here; use only via theme utilities in components */
+	--background: 240 10% 4%;
+	--foreground: 200 10% 95%;
+	--card: 240 10% 6%;
+	--card-foreground: 200 10% 95%;
+	--primary: 190 70% 50%;
+	--primary-foreground: 240 10% 4%;
+	--secondary: 175 50% 35%;
+	--secondary-foreground: 200 10% 95%;
+	--muted: 240 10% 12%;
+	--muted-foreground: 200 5% 50%;
+	--accent: 150 60% 45%;
+	--accent-foreground: 240 10% 4%;
+	--destructive: 0 70% 50%;
+	--destructive-foreground: 0 0% 98%;
+	--border: 240 10% 18%;
+	--input: 240 10% 10%;
+	--ring: 190 70% 50%;
+	--radius: 0.5rem;
+}
+
+/* Tailwind v4 Theme - Maps CSS vars to utility classes */
+@theme {
+	--color-background: hsl(var(--background));
+	--color-foreground: hsl(var(--foreground));
+	--color-card: hsl(var(--card));
+	--color-card-foreground: hsl(var(--card-foreground));
+	--color-primary: hsl(var(--primary));
+	--color-primary-foreground: hsl(var(--primary-foreground));
+	--color-secondary: hsl(var(--secondary));
+	--color-secondary-foreground: hsl(var(--secondary-foreground));
+	--color-muted: hsl(var(--muted));
+	--color-muted-foreground: hsl(var(--muted-foreground));
+	--color-accent: hsl(var(--accent));
+	--color-accent-foreground: hsl(var(--accent-foreground));
+	--color-destructive: hsl(var(--destructive));
+	--color-destructive-foreground: hsl(var(--destructive-foreground));
+	--color-border: hsl(var(--border));
+	--color-input: hsl(var(--input));
+	--color-ring: hsl(var(--ring));
+
+	--radius-sm: calc(var(--radius) - 2px);
+	--radius-md: var(--radius);
+	--radius-lg: calc(var(--radius) + 2px);
+
+	--font-sans: ui-sans-serif, system-ui, sans-serif;
+	--font-mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, monospace;
+}
+
+/* Base styles */
+@layer base {
+	body {
+		margin: 0;
+		background-color: var(--color-background);
+		color: var(--color-foreground);
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	code {
+		font-family: var(--font-mono);
+	}
+}
