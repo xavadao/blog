@@ -1,19 +1,22 @@
 'use client';
 
 import type { ReactNode } from 'react';
-/**
- * App Component
- *
- * Main application component with React Router and React Query.
- *
- * Routing: React Router v7 library mode — createBrowserRouter + RouterProvider.
- * - Import from 'react-router' only. Never from 'react-router-dom'.
- * - Use createBrowserRouter (data router). Do NOT use <BrowserRouter> or <HashRouter>.
- * - Add routes by adding entries to the `router` array below.
- */
+
 
 import { Outlet, OutletProvider } from '@/lib/router-compat';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Nav } from './components/Nav';
+import { Hero } from './components/Hero';
+import { FeaturedStory } from './components/FeaturedStory';
+import { CategoryGrid } from './components/CategoryGrid';
+import { PostGrid } from './components/PostGrid';
+import { AboutStrip } from './components/AboutStrip';
+import { Newsletter } from './components/Newsletter';
+import { Footer } from './components/Footer';
+
+import { CategoryPage } from './pages/CategoryPage';
+import { PostPage } from './pages/PostPage';
+
 const queryClient = new QueryClient({
 	defaultOptions: {
 		queries: {
@@ -23,15 +26,48 @@ const queryClient = new QueryClient({
 	},
 });
 
+/** Shared page shell — Nav wraps every route */
+function PageShell({ children }: { children: React.ReactNode }) {
+	return (
+		<div style={{ backgroundColor: 'var(--color-background)', minHeight: '100vh' }}>
+			<Nav />
+			{children}
+		</div>
+	);
+}
+
+/** Homepage — full editorial layout */
 function HomePage() {
 	return (
-		<div className="flex items-center justify-center p-4 min-h-screen">
-			<div className="text-center">
-				<h1 className="text-6xl font-bold bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">
-					Nullshot Beta
-				</h1>
-			</div>
-		</div>
+		<PageShell>
+			<Hero />
+			<FeaturedStory />
+			<CategoryGrid />
+			<PostGrid />
+			<AboutStrip />
+			<Newsletter />
+			<Footer />
+		</PageShell>
+	);
+}
+
+function CategoryRoute() {
+	return (
+		<PageShell>
+			<CategoryPage />
+		</PageShell>
+	);
+}
+
+function PostsRoute() {
+	return <PageShell><CategoryPage showAll /></PageShell>;
+}
+
+function PostRoute() {
+	return (
+		<PageShell>
+			<PostPage />
+		</PageShell>
 	);
 }
 
@@ -44,4 +80,4 @@ export default function AppShell({ children }: { children: ReactNode }) {
 }
 
 // Route components defined inline in the original app.tsx, for src/app/**/page.tsx.
-export { HomePage };
+export { HomePage, CategoryRoute, PostRoute, PostsRoute };

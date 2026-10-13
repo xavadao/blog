@@ -5,7 +5,7 @@ import AppShell from '@/site/app-shell';
 import './globals.css';
 
 export const metadata: Metadata = {
-	title: "{{APP_NAME}}",
+	title: "Lumière — A Life Well Lived",
 	description: "",
 	icons: {
 		icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
