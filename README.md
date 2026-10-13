@@ -1,8 +1,8 @@
 # Lumière Lifestyle Journal
 
-An editorial lifestyle blog demo featuring the Lumière sample publication.
+An open-source lifestyle journal with thoughtful stories, inviting photography, and an editorial design you can make your own.
 
-[Live demo](https://vibed-blog.xavainf.com)
+[Live demo](https://vibed-blog.xavainf.com) · [View source on GitHub](https://github.com/xavadao/blog)
 
 ## Features
 
@@ -61,4 +61,8 @@ Photography loads from the original Unsplash URLs and typography from Google Fon
 
 Public pages include descriptive sample-content metadata, canonical URLs, social previews, a sitemap, robots.txt, and a concise llms.txt directory. The initial exported HTML contains the page content; query-dependent state hydrates separately. Private browser-state pages are omitted from the sitemap and carry noindex metadata where applicable. These conventions support discovery; they do not promise search or assistant rankings.
 
-Every page includes an accessible “Made with XavaInf” credit linking to https://xavainf.com. The credit is placed in page flow so it does not cover forms, galleries, or mobile navigation.
+Every page includes a fixed bottom-right “Made with XavaInf” tag linking to https://xavainf.com and a “View source on GitHub” link in the footer. The tag follows the reader while scrolling, respects device safe areas, and stays below dialogs.
+
+## License
+
+The application code is open source under the [MIT License](LICENSE). Photography, fonts, and dependencies retain their own terms; see [Third-party notices](THIRD_PARTY_NOTICES.md).
